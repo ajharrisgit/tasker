@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJSU-Tasker | User Guide</title>
+    <meta name="author" content="AJSU | FUTURE STRATEGY">
+    <meta name="publisher" content="AJSU | FUTURE STRATEGY">
+    <style>
+        :root {
+            --ink:   #212B36;
+            --muted: #637381;
+            --rule:  #DFE3E8;
+            --blue:  #0052CC;
+            --green: #007B55;
+            --font:  Georgia, "Times New Roman", serif;
+            --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font); font-size: 11pt; color: var(--ink); background: white; line-height: 1.65; }
+        .page { max-width: 7.5in; margin: 0 auto; padding: 0.9in; }
+
+        .cover { text-align: center; padding: 1.2in 0 0.8in; border-bottom: 3px solid var(--ink); margin-bottom: 0.5in; }
+        .cover h1 { font-size: 22pt; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .cover .sub { font-size: 13pt; color: var(--muted); font-style: italic; margin-bottom: 20px; }
+        .cover .meta { font-size: 9pt; color: var(--muted); font-family: var(--sans); }
+
+        .toc { margin: 0 0 0.5in; padding: 18px 22px; background: #F4F6F8; border-left: 4px solid var(--blue); }
+        .toc-label { font-size: 9pt; font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; margin-bottom: 10px; }
+        .toc ol { padding-left: 20px; }
+        .toc li { font-size: 10pt; font-family: var(--sans); margin-bottom: 4px; }
+        .toc a { color: var(--blue); text-decoration: none; }
+
+        .section { margin-bottom: 0.45in; }
+        h2.sec { font-size: 14pt; font-weight: 700; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 18px; page-break-after: avoid; }
+        h3 { font-size: 11pt; font-weight: 700; margin: 20px 0 8px; color: var(--ink); }
+        p { margin-bottom: 12px; }
+        ul, ol { padding-left: 22px; margin-bottom: 14px; }
+        li { margin-bottom: 8px; line-height: 1.65; }
+        strong { font-weight: 700; }
+
+        .note { border-left: 4px solid var(--blue); padding: 10px 14px; background: #EEF4FF; margin: 16px 0; font-size: 10pt; font-family: var(--sans); }
+        .note strong { display: block; margin-bottom: 4px; color: var(--blue); }
+        .note.caution { border-left-color: #D32F2F; background: #FFF5F5; }
+        .note.caution strong { color: #D32F2F; }
+        .note.tip { border-left-color: var(--green); background: #F0FAF6; }
+        .note.tip strong { color: var(--green); }
+
+        table.ref { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10pt; font-family: var(--sans); }
+        table.ref th { background: var(--ink); color: white; padding: 7px 10px; text-align: left; font-weight: 700; }
+        table.ref td { padding: 6px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+        table.ref tr:nth-child(even) td { background: #F9FAFB; }
+        table.ref td:first-child { font-weight: 700; white-space: nowrap; }
+
+        .steps { padding-left: 0; list-style: none; counter-reset: steps; }
+        .steps li { counter-increment: steps; padding: 10px 14px 10px 46px; position: relative; margin-bottom: 8px; background: #F4F6F8; border-radius: 4px; font-family: var(--sans); font-size: 10pt; }
+        .steps li::before { content: counter(steps); position: absolute; left: 12px; top: 10px; background: var(--blue); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 9pt; }
+
+        @page { margin: 1in; }
+        @media print {
+            .page { padding: 0; max-width: 100%; }
+            h2.sec { page-break-before: auto; }
+            .section { page-break-inside: avoid; }
+            .toc a { color: var(--ink); }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+    <h1>AJSU-Tasker</h1>
+    <p class="sub">User Guide</p>
+    <p class="meta">AJSU | FUTURE STRATEGY &nbsp;&bull;&nbsp; EPC 2026 Biweekly Work Log &nbsp;&bull;&nbsp; Revision 2</p>
+</div>
+
+<div class="toc">
+    <div class="toc-label">Contents</div>
+    <ol>
+        <li><a href="#s1">Overview</a></li>
+        <li><a href="#s2">How to Use the Application</a></li>
+        <li><a href="#s3">Getting Started</a></li>
+        <li><a href="#s4">Daily Workflow</a></li>
+        <li><a href="#s5">Planning Tab</a></li>
+        <li><a href="#s6">Logging Activity Blocks</a></li>
+        <li><a href="#s7">Your Metrics</a></li>
+        <li><a href="#s8">Trends Over Time</a></li>
+        <li><a href="#s9">The Tasker Memo</a></li>
+        <li><a href="#s10">Printing and PDF Export</a></li>
+        <li><a href="#s11">Backups and Data Safety</a></li>
+        <li><a href="#s12">Field Reference</a></li>
+        <li><a href="#s13">Frequently Asked Questions</a></li>
+    </ol>
+</div>
+
+<!-- 1 -->
+<div class="section" id="s1">
+    <h2 class="sec">1. Overview</h2>
+    <p>AJSU-Tasker is a biweekly work log that runs in your browser as a single HTML file. It replaces the manual Excel-based work log for EPC employees. The application handles memo formatting, tracks your activity across pay periods, and builds productivity trend charts automatically over the course of the year.</p>
+    <p>Your data stays on your computer. Nothing is sent to a server or shared with any external service.</p>
+    <p>The application covers the full 26-period EPC pay calendar for 2026.</p>
+</div>
+
+<!-- 2 -->
+<div class="section" id="s2">
+    <h2 class="sec">2. How to Use the Application</h2>
+    <p>The navigation bar at the top contains all tabs. Work flows left to right across a pay period:</p>
+    <ul>
+        <li><strong>Guide</strong> - Quick reference inside the application.</li>
+        <li><strong>Planning</strong> - Set your objectives, to-do list, deadlines, and notes before the period starts. Feedback from your supervisor also goes here and carries to the memo.</li>
+        <li><strong>Week 1 and Week 2</strong> - Log your daily activity blocks here. Each day shows Monday through Friday with five rows. Add more rows with the + Add Row button if needed.</li>
+        <li><strong>Employee View</strong> - Your personal metrics for the current period: completion rate, category breakdown, priority distribution, and worksite distribution.</li>
+        <li><strong>Management View</strong> - Items requiring your supervisor's attention, high-priority completions, and a full count of every status for the period.</li>
+        <li><strong>Dashboard</strong> - Visual charts for the current period's status, category, and worksite distributions.</li>
+        <li><strong>Trends</strong> - Cross-period charts that build automatically as you work through the year. No action required from you.</li>
+        <li><strong>Memo</strong> - The Tasker Memo. Fill in your name, department, and supervisor, then print or save as PDF.</li>
+    </ul>
+
+    <p><strong>Status Color Coding</strong></p>
+    <p>Status dropdowns change background color to reflect the current value, so you can scan the week at a glance:</p>
+    <table class="ref">
+        <tr><th>Color</th><th>Status</th></tr>
+        <tr><td>White background</td><td>Pending</td></tr>
+        <tr><td>Gray background</td><td>In-Progress</td></tr>
+        <tr><td>Green background</td><td>Complete</td></tr>
+        <tr><td>Red background</td><td>On Hold</td></tr>
+        <tr><td>Orange-red background</td><td>Follow-up</td></tr>
+        <tr><td>Amber background</td><td>Delegated or Re-assigned</td></tr>
+    </table>
+</div>
+
+<!-- 3 -->
+<div class="section" id="s3">
+    <h2 class="sec">3. Getting Started</h2>
+    <h3>What You Need</h3>
+    <ul>
+        <li>A Windows computer with Chrome or Edge (recommended) or Firefox.</li>
+        <li>The file: <strong>AJSU-Tasker-v6.html</strong> saved to your computer. Your desktop or a dedicated folder both work well.</li>
+        <li>An internet connection the first time you open the file so the charting library can download and cache. After that, the application works without internet.</li>
+    </ul>
+
+    <h3>Opening the Application</h3>
+    <p>Double-click the HTML file. It opens in your default browser. No installation, no setup required. Your last saved data loads automatically every time you open it.</p>
+
+    <div class="note caution">
+        <strong>Security Notice on First Open</strong>
+        Windows may show a SmartScreen or "unrecognized file" warning when you first open a downloaded HTML file. This is standard Windows behavior for files downloaded from the internet. To dismiss it permanently: right-click the file, select Properties, check the Unblock box, and click Apply. You will not see the warning again for that file. AJSU-Tasker is published by AJSU | FUTURE STRATEGY.
+    </div>
+
+    <h3>Automatic Downloads Setting</h3>
+    <p>When you click Download Backup, your browser saves a file to your computer. Some browser settings block this automatically. If backup files do not save when you click the button:</p>
+    <ul>
+        <li><strong>Chrome or Edge:</strong> Go to Settings, then Privacy and Security, then Site Settings, then Automatic Downloads. Add the folder where your HTML file is saved to the Allowed list.</li>
+        <li><strong>Firefox:</strong> Go to Settings, then General, then Files and Applications. Make sure the download folder is set and automatic saving is allowed.</li>
+    </ul>
+
+    <h3>Selecting Your Pay Period</h3>
+    <p>Select your current pay period from the dropdown at the top right. Each option shows the work date range followed by the pay date in parentheses. The dates for Week 1 and Week 2 update automatically. Your previously entered data for that period loads immediately.</p>
+
+    <h3>Starting a New Year</h3>
+    <p>To start fresh for a new year without losing your current year's data, save a copy of the HTML file to a new folder. In Chrome and Edge, each unique file location has its own independent storage. The new copy opens with no existing data.</p>
+</div>
+
+<!-- 4 -->
+<div class="section" id="s4">
+    <h2 class="sec">4. Daily Workflow</h2>
+    <p>Log your blocks at the end of each workday or the start of the following day while the work is fresh. Logging everything at the end of a pay period is possible but takes longer.</p>
+    <ol class="steps">
+        <li>Confirm the correct pay period is selected in the top-right dropdown.</li>
+        <li>Click Week 1 or Week 2 for the week you are logging.</li>
+        <li>Find the day row for today (labeled Monday through Friday with the calendar date).</li>
+        <li>For each block of work: select a Category, type the Activity, set Status and Priority, select a Worksite, and add any Notes.</li>
+        <li>The application saves as you type. No Save button is needed.</li>
+        <li>At the end of your session, click Download Backup to save a permanent file copy to your computer.</li>
+    </ol>
+    <div class="note tip">
+        <strong>Need more rows?</strong>
+        Click the + Add Row button in any day header. You can add as many rows as needed. They save automatically like the default rows.
+    </div>
+</div>
+
+<!-- 5 -->
+<div class="section" id="s5">
+    <h2 class="sec">5. Planning Tab</h2>
+    <p>Use the Planning tab at the start of each pay period before logging daily blocks. All planning fields are plain text and support one item per line for clean reading.</p>
+    <table class="ref">
+        <tr><th>Field</th><th>Purpose</th><th>Format</th></tr>
+        <tr><td>Weekly Objectives</td><td>Goals for this period</td><td>One objective per line</td></tr>
+        <tr><td>Employee Notes</td><td>Personal reminders and context - not shared</td><td>One note per line</td></tr>
+        <tr><td>To-Do Items</td><td>Specific tasks to complete</td><td>One item per line</td></tr>
+        <tr><td>Deadlines This Period</td><td>Hard deadlines, PCR cutoffs, submission dates</td><td>One deadline per line</td></tr>
+        <tr><td>Feedback</td><td>Supervisor notes and feedback - syncs to the memo</td><td>One note per line</td></tr>
+    </table>
+    <p>All five fields can be resized by dragging the lower-right corner. Planning notes are saved separately for each pay period. Switching periods loads the planning context for that period.</p>
+    <div class="note tip">
+        <strong>Feedback syncs automatically</strong>
+        Whatever you type in the Feedback field appears in the Supervisor Notes section of the printed memo. You do not need to copy and paste. Changes go directly to the memo.
+    </div>
+</div>
+
+<!-- 6 -->
+<div class="section" id="s6">
+    <h2 class="sec">6. Logging Activity Blocks</h2>
+    <h3>Block Category (Alphabetical)</h3>
+    <table class="ref">
+        <tr><th>Category</th><th>When to Use</th></tr>
+        <tr><td>Leave/PTO</td><td>Any time away - annual leave, sick leave, holiday</td></tr>
+        <tr><td>Meeting</td><td>Time in a meeting where the meeting itself is the primary block</td></tr>
+        <tr><td>Non-Recurring</td><td>One-time or special assignments unique to this period</td></tr>
+        <tr><td>Project</td><td>Focused work on a named project or initiative</td></tr>
+        <tr><td>Routine</td><td>Standard recurring work you do every period</td></tr>
+    </table>
+
+    <h3>Status (Alphabetical)</h3>
+    <table class="ref">
+        <tr><th>Status</th><th>When to Use</th><th>Flags for Supervisor Review?</th></tr>
+        <tr><td>Complete</td><td>Work fully finished</td><td>No</td></tr>
+        <tr><td>Delegated</td><td>Handed off to another person</td><td>Yes</td></tr>
+        <tr><td>Follow-up</td><td>Needs a follow-up action before it can close</td><td>Yes</td></tr>
+        <tr><td>In-Progress</td><td>Actively underway</td><td>No</td></tr>
+        <tr><td>On Hold</td><td>Stopped by an external obstacle - waiting on another party, missing information, or access issue</td><td>Yes</td></tr>
+        <tr><td>Pending</td><td>Has not started yet</td><td>No</td></tr>
+        <tr><td>Re-assigned</td><td>Formally moved to a different owner</td><td>Yes</td></tr>
+    </table>
+
+    <div class="note">
+        <strong>On Hold vs. activity blocks</strong>
+        "On Hold" is a status for work that is stopped. The rows you fill in on Week 1 and Week 2 are called activity blocks. These two terms are intentionally different to avoid confusion.
+    </div>
+
+    <h3>Priority</h3>
+    <p>Choose from <strong>Elevated</strong>, <strong>High</strong>, or <strong>Standard</strong>. High-priority items marked Complete appear in the Management View summary.</p>
+
+    <h3>Worksite</h3>
+    <p>Select where the work was performed. Choose from the five preset locations or leave it blank. Worksite is a personal metric and does not appear in the Management View or in the Tasker Memo.</p>
+    <table class="ref">
+        <tr><th>Worksite</th><th>Description</th></tr>
+        <tr><td>Alternate Work Location</td><td>Approved alternate office or co-working site</td></tr>
+        <tr><td>Office</td><td>Your primary county office location</td></tr>
+        <tr><td>Off-site</td><td>A client site, partner location, or external facility</td></tr>
+        <tr><td>Telework-Remote</td><td>Remote work from a location other than your residence</td></tr>
+        <tr><td>Telework-Residence</td><td>Approved work from home</td></tr>
+    </table>
+    <p>The worksite dropdown is fully re-selectable. Click it to choose a different location at any time.</p>
+</div>
+
+<!-- 7 -->
+<div class="section" id="s7">
+    <h2 class="sec">7. Your Metrics</h2>
+    <h3>Employee View</h3>
+    <p>Answers the question: <em>How is this period going for me?</em></p>
+    <ul>
+        <li><strong>Completion Rate</strong> - Percentage of your logged blocks marked Complete. Green above 75%, red below 25%. A low rate is not necessarily a problem if many blocks are still in progress.</li>
+        <li><strong>Blocks by Category</strong> - How your effort is distributed across the five categories.</li>
+        <li><strong>Priority Distribution</strong> - How many blocks are Standard, Elevated, or High priority.</li>
+        <li><strong>Blocks by Worksite</strong> - Where your work was performed this period. Only shows if worksite data has been entered.</li>
+    </ul>
+
+    <h3>Management View</h3>
+    <p>Answers the question: <em>What needs attention and what got done?</em></p>
+    <ul>
+        <li><strong>Items Requiring Attention</strong> - Count of blocks with On Hold, Follow-up, Delegated, or Re-assigned status. Turns red when greater than zero.</li>
+        <li><strong>High Priority Items Complete</strong> - Count of Elevated or High priority blocks marked Complete.</li>
+        <li><strong>Period Status Summary</strong> - Full count of all seven statuses. Quick reference for the overall shape of the period.</li>
+        <li><strong>Items Requiring Review</strong> - Detailed list of each escalated block with the day and any notes.</li>
+    </ul>
+
+    <h3>Dashboard</h3>
+    <p>Visual charts of the current period's status distribution, category distribution, and worksite distribution. Use these for a quick visual read or to present in a team meeting.</p>
+</div>
+
+<!-- 8 -->
+<div class="section" id="s8">
+    <h2 class="sec">8. Trends Over Time</h2>
+    <p>The Trends tab shows how your metrics change across pay periods throughout the year.</p>
+    <h3>How It Works</h3>
+    <p>Trend data is recorded automatically. Each time you switch pay periods, the application saves a compact summary of the period you are leaving. No downloads, no extra steps. Before any data is recorded, the Trends tab shows a dimmed preview of the metrics it will track. After working in two or more pay periods, the charts populate with your actual data.</p>
+    <table class="ref">
+        <tr><th>Chart</th><th>What It Shows</th></tr>
+        <tr><td>Completion Rate Over Time</td><td>Your completion percentage period by period, with a direction indicator (Improving, Stable, or Declining) based on recent vs. earlier periods.</td></tr>
+        <tr><td>Items Requiring Attention</td><td>Count of escalated blocks per period. Helps identify whether issues are increasing or decreasing over time.</td></tr>
+        <tr><td>Category Mix by Period</td><td>How the type of work you do shifts from period to period.</td></tr>
+        <tr><td>Priority Distribution by Period</td><td>Whether Standard, Elevated, and High priority blocks are shifting over time.</td></tr>
+        <tr><td>Worksite Distribution by Period</td><td>Where your work was performed, period by period. Only appears if worksite data has been recorded.</td></tr>
+    </table>
+    <div class="note tip">
+        <strong>Trend data is in every backup file</strong>
+        Each backup JSON file contains the full history of period summaries. Restoring a backup also restores all historical trend data from that file.
+    </div>
+</div>
+
+<!-- 9 -->
+<div class="section" id="s9">
+    <h2 class="sec">9. The Tasker Memo</h2>
+    <p>The Memo tab generates your Tasker Memo automatically from your Week 1 and Week 2 entries.</p>
+
+    <h3>Filling In the Header</h3>
+    <p>The memo header has two columns. All fields are editable by clicking directly on them.</p>
+    <ul>
+        <li><strong>Column 1:</strong> Prepared On (auto-fills with today's date), Name, Department</li>
+        <li><strong>Column 2:</strong> Pay Period (auto-fills from your period selection), Supervisor</li>
+    </ul>
+    <p>Name, Department, and Supervisor fields are blank by default so each user fills in their own information. Once filled in, these values are saved and restored on every session.</p>
+    <p>The Pay Period field shows the work date range for the selected period. You can click on it to make small adjustments before printing if needed. It resets to the computed value whenever you switch pay periods.</p>
+
+    <h3>Supervisor Notes</h3>
+    <p>The Supervisor Notes section below the header pulls from the Feedback field in the Planning tab. Edit it there for persistent changes. Any edits made directly on the Memo tab are for the current preview only.</p>
+
+    <h3>Activity Tracker</h3>
+    <p>The Activity Tracker table lists all activities from Week 1 and Week 2, grouped by week. Each entry shows the date, activity, status, and notes. It populates automatically. You do not need to do anything to fill it in.</p>
+    <p>Worksite and Category are not included in the Activity Tracker. Worksite is a personal metric. Category is an internal classification — the Tasker Memo communicates outcomes to management, not internal labels.</p>
+
+    <h3>Signature Lines</h3>
+    <p>The Employee Signature and Supervisor Signature lines appear at the bottom of the memo for manual signing after printing.</p>
+</div>
+
+<!-- 10 -->
+<div class="section" id="s10">
+    <h2 class="sec">10. Printing and PDF Export</h2>
+    <h3>Printing the Memo</h3>
+    <ol class="steps">
+        <li>Make sure all blocks for the period are entered in Week 1 and Week 2.</li>
+        <li>Check that the Feedback field in the Planning tab is current. It syncs automatically to the memo.</li>
+        <li>Click the Memo tab or the Print Memo button to review the Tasker Memo layout.</li>
+        <li>Fill in your name, department, and supervisor if not already set.</li>
+        <li>Click Print Memo at the top right.</li>
+    </ol>
+
+    <h3>Saving as PDF</h3>
+    <p>In the browser print dialog, set the destination to <strong>Save as PDF</strong>. This produces the cleanest output and respects the memo's margin settings.</p>
+    <div class="note caution">
+        <strong>Avoid "Microsoft Print to PDF"</strong>
+        The Windows "Microsoft Print to PDF" printer option adds browser-generated date and URL headers to the top and bottom of the page by default. These are not part of the memo format. If you must use it, uncheck "Headers and footers" in the print dialog. Chrome's built-in "Save as PDF" does not add these automatically.
+    </div>
+
+    <h3>Printing Other Tabs</h3>
+    <p>Any tab can be printed using your browser's standard print command (Ctrl+P or Command+P). The navigation bar and buttons are hidden automatically. The active tab content is what prints.</p>
+    <p>Examples of when you might print other tabs:</p>
+    <ul>
+        <li>Print the Planning tab to post at your desk as a reference for the period.</li>
+        <li>Print the Management View or Dashboard for a team meeting presentation.</li>
+        <li>Print Week 1 or Week 2 as a record of activity before the period closes.</li>
+    </ul>
+    <div class="note">
+        <strong>Printed worklogs identify themselves</strong>
+        When you print Week 1 or Week 2, a header is added at the top of the page showing your name, department, supervisor, and the pay period — even though that header is not visible on screen. It is filled in from the Name, Department, and Supervisor fields on the Memo tab, so fill those in before printing. If they are blank, the printed sheet will say "(name not entered)".
+    </div>
+
+    <h3>Print Note for Claude Desktop Users</h3>
+    <p>If you are viewing the application inside the Claude Desktop HTML preview, the Print Memo button will not trigger a print dialog. This is a limitation of the sandboxed preview environment, not an error in the application. Open the AJSU-Tasker-v6.html file directly in Chrome or Edge for full print functionality.</p>
+</div>
+
+<!-- 11 -->
+<div class="section" id="s11">
+    <h2 class="sec">11. Backups and Data Safety</h2>
+    <h3>How Data is Saved</h3>
+    <p>The application saves your work automatically as you type using browser storage on your computer. As long as you do not clear your browser history or cookies, your work will be there the next time you open the application.</p>
+    <div class="note caution">
+        <strong>Clearing browser history deletes your data</strong>
+        If you clear browser history, cookies, or site data, your work log data will be permanently removed from that browser. Always download a backup file before clearing your browser, switching computers, or resetting your browser profile.
+    </div>
+
+    <h3>Knowing Your Work Is Saved</h3>
+    <p>A small <strong>Saved</strong> indicator with a timestamp appears in the top navigation bar each time your work is written to the browser. It updates as you type. This confirms your data is stored in this browser — it is not the same as downloading a backup file.</p>
+    <p>If saving ever fails, that indicator turns red and reads <strong>NOT SAVED</strong>, and the banner at the bottom of the screen changes to a saving-failure message. If you see that, download a backup immediately and do not close the tab until you have.</p>
+
+    <h3>Downloading a Backup</h3>
+    <p>A red banner appears at the bottom of the screen when you have changes that have not been saved to a file. Click Download Backup to save a JSON file to your computer. You can dismiss the banner with the <strong>&times;</strong> button at its right edge if it covers content you need to read — it is only a reminder, and it will reappear the next time you make a change.</p>
+    <p>Backup files are named automatically by period number:</p>
+    <p><em>AJSU-Tasker_PayPeriod16_Backup.json</em></p>
+    <p>Keep backups organized in a folder by year. Trends history is captured automatically each time you switch pay periods, not on backup download.</p>
+
+    <h3>Restoring a Backup</h3>
+    <ol class="steps">
+        <li>Click Restore Backup in the top navigation bar.</li>
+        <li>Select the backup JSON file from your computer.</li>
+        <li>All data from that backup, including all blocks, planning notes, and trend history, is restored.</li>
+    </ol>
+    <div class="note">
+        <strong>Restoring replaces current data</strong>
+        Restoring a backup replaces everything currently in the application with the contents of that backup file. If you have unsaved current-session work, download a backup of it first.
+    </div>
+
+    <h3>Single User Only</h3>
+    <p>This application saves data to a specific computer and browser profile. Do not share your browser profile with other users. Each person should have their own copy of the HTML file.</p>
+</div>
+
+<!-- 12 -->
+<div class="section" id="s12">
+    <h2 class="sec">12. Field Reference</h2>
+    <table class="ref">
+        <tr><th>Field</th><th>Tab</th><th>Saved Per</th><th>Notes</th></tr>
+        <tr><td>Pay Period</td><td>Dropdown (top right)</td><td>Global</td><td>Controls which week dates appear in Week 1 and Week 2. Drives all date displays.</td></tr>
+        <tr><td>Weekly Objectives</td><td>Planning</td><td>Pay period</td><td>Plain text, one per line. Resizable.</td></tr>
+        <tr><td>Employee Notes</td><td>Planning</td><td>Pay period</td><td>Personal notes, not shared or printed. Resizable.</td></tr>
+        <tr><td>To-Do Items</td><td>Planning</td><td>Pay period</td><td>Plain text, one per line. Resizable.</td></tr>
+        <tr><td>Deadlines This Period</td><td>Planning</td><td>Pay period</td><td>Plain text, one per line. Resizable.</td></tr>
+        <tr><td>Feedback</td><td>Planning</td><td>Pay period</td><td>Syncs to memo Supervisor Notes in real time. Resizable.</td></tr>
+        <tr><td>Category</td><td>Week 1 / Week 2</td><td>Per row (by date)</td><td>Dropdown. Alphabetical. Default: Routine.</td></tr>
+        <tr><td>Activity</td><td>Week 1 / Week 2</td><td>Per row (by date)</td><td>Free text. Appears in the memo activity tracker.</td></tr>
+        <tr><td>Status</td><td>Week 1 / Week 2</td><td>Per row (by date)</td><td>Dropdown. Alphabetical. Background color updates automatically. Default: Pending.</td></tr>
+        <tr><td>Priority</td><td>Week 1 / Week 2</td><td>Per row (by date)</td><td>Dropdown. Alphabetical. Default: Standard.</td></tr>
+        <tr><td>Worksite</td><td>Week 1 / Week 2</td><td>Per row (by date)</td><td>Dropdown. Five presets. Re-selectable at any time. Does not appear in the Tasker Memo.</td></tr>
+        <tr><td>Notes</td><td>Week 1 / Week 2</td><td>Per row (by date)</td><td>Free text. Appears in memo activity tracker.</td></tr>
+        <tr><td>Prepared On</td><td>Memo</td><td>Global</td><td>Auto-fills with today's date on first use. Editable.</td></tr>
+        <tr><td>Name</td><td>Memo</td><td>Global</td><td>Blank by default. Fill in your name. Saved across all periods.</td></tr>
+        <tr><td>Department</td><td>Memo</td><td>Global</td><td>Blank by default. Saved across all periods.</td></tr>
+        <tr><td>Pay Period (memo)</td><td>Memo</td><td>Per period</td><td>Auto-fills with work date range on period switch. Editable before printing.</td></tr>
+        <tr><td>Supervisor</td><td>Memo</td><td>Global</td><td>Blank by default. Fill in your supervisor's name. Saved across all periods.</td></tr>
+        <tr><td>Supervisor Notes</td><td>Memo</td><td>Per period</td><td>Synced from Planning Feedback. Edits here are preview-only; use Planning for persistent changes.</td></tr>
+        <tr><td>Trend History</td><td>Trends</td><td>Global (accumulated)</td><td>Compact period summaries captured automatically when switching periods. Stored in backup files.</td></tr>
+    </table>
+</div>
+
+<!-- 13 -->
+<div class="section" id="s13">
+    <h2 class="sec">13. Frequently Asked Questions</h2>
+
+    <h3>Does my data stay when I close the browser?</h3>
+    <p>Yes. The application saves automatically as you type. Your data will be there the next time you open the file in the same browser on the same computer.</p>
+
+    <h3>What happens when I switch pay periods?</h3>
+    <p>Your current period's data is saved. The application loads the entries and planning notes for the selected period. Switching back restores all your work for the original period. Switching periods also records your metrics in the Trends history.</p>
+
+    <h3>What is the difference between "blocks" and "On Hold"?</h3>
+    <p><strong>Blocks</strong> (or activity blocks) are the individual rows you fill in on Week 1 and Week 2 - each row represents one unit of work. <strong>On Hold</strong> is a Status option for a block that has been stopped by an external obstacle, such as waiting for information from another party. These terms are kept distinct to avoid confusion.</p>
+
+    <h3>Can I change the worksite after selecting one?</h3>
+    <p>Yes. The worksite field is a standard dropdown. Click it and select a different location at any time. To clear it, select the blank option at the top of the list.</p>
+
+    <h3>Do I need to do anything to build my Trends charts?</h3>
+    <p>No. Trend data is recorded each time you switch pay periods. After working in two or more periods, the charts appear automatically. No backup download is needed to build trend history.</p>
+
+    <h3>Why is the Worksite Distribution chart missing from the Trends tab?</h3>
+    <p>The chart only appears if worksite data has been recorded in at least one period. If the Worksite field has not been used, the chart stays hidden. Start filling in worksite and it will appear after you switch to your next period.</p>
+
+    <h3>What does it mean when the Trends tab says I only have 1 period?</h3>
+    <p>Trend charts require data from at least 2 pay periods for comparison. Work in one more period (and switch away from it at least once) and the charts will appear.</p>
+
+    <h3>My name and department are blank on the memo. Is that normal?</h3>
+    <p>Yes. These fields are blank by default so the application works for any user without hardcoded names. Click on the Name or Department field on the Memo tab and type your information. The values are saved and will appear on every future session.</p>
+
+    <h3>Can I edit the Pay Period dates on the memo?</h3>
+    <p>Yes. Click on the date range next to "PAY PERIOD:" on the Memo tab to edit it before printing. The field resets to the computed date range when you switch pay periods.</p>
+
+    <h3>The Print Memo button does not open a print dialog. What's wrong?</h3>
+    <p>If you are viewing the application inside the Claude Desktop HTML preview, the print function is blocked by the preview environment's security settings. This is not an error in the application. Open AJSU-Tasker-v6.html directly in Chrome or Edge for full print functionality.</p>
+
+    <h3>I cleared my browser history and lost my data. Can I recover it?</h3>
+    <p>Only if you have a previously downloaded backup file. Click Restore Backup and select your most recent JSON backup. All data from that file will be restored. This is why downloading backups regularly is important.</p>
+
+    <h3>Can two people use the same file on the same computer?</h3>
+    <p>No. The application is single-user. Each person should have their own copy of the HTML file and use a separate browser profile. Sharing a browser profile will mix both users' data.</p>
+
+    <h3>Does worksite information appear on the printed memo?</h3>
+    <p>No. Worksite is a personal productivity metric visible in the Employee View and Dashboard. It is intentionally excluded from the Tasker Memo and the Management View.</p>
+</div>
+
+</div>
+</body>
+</html>
