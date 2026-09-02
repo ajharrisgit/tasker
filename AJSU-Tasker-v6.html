@@ -8,6 +8,8 @@
     <meta name="publisher" content="AJSU | FUTURE STRATEGY">
     <meta name="application-name" content="AJSU-Tasker">
     <meta name="description" content="Bi-weekly work log and Tasker Memo tool by AJSU | FUTURE STRATEGY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-1G2Xof0CLF+yn6L0Xry8MiAtc67r8HbOX3JI9UmPx9c=' 'sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=' 'sha256-mmiQqJ9My9eRVmp+WCBSav2muM/L5c8BjwU8geUIH5k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
+    <meta name="referrer" content="no-referrer">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%230052CC%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2243%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2230%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAT%3C/text%3E%3C/svg%3E">
     <!-- Chart.js and its datalabels plugin are INLINED here, not loaded from a CDN.
          This app is opened directly from disk (file://) and has no service worker or
@@ -372,19 +374,19 @@
          evidence the view changed. switchTab() maintains aria-selected and moves focus
          to the newly revealed panel. -->
     <div class="tab-group" role="tablist" aria-label="Work log sections">
-        <button onclick="switchTab('guide')"     id="btn-guide"     role="tab" aria-controls="guide"     aria-selected="false">Guide</button>
-        <button onclick="switchTab('planning')"  id="btn-planning"  role="tab" aria-controls="planning"  aria-selected="false">Planning</button>
-        <button onclick="switchTab('week1')"     id="btn-week1"     role="tab" aria-controls="week1"     aria-selected="false">Week 1</button>
-        <button onclick="switchTab('week2')"     id="btn-week2"     role="tab" aria-controls="week2"     aria-selected="false">Week 2</button>
-        <button onclick="switchTab('emp-view')"  id="btn-emp-view"  role="tab" aria-controls="emp-view"  aria-selected="false">Employee View</button>
-        <button onclick="switchTab('sup-view')"  id="btn-sup-view"  role="tab" aria-controls="sup-view"  aria-selected="false">Management View</button>
-        <button onclick="switchTab('dashboard')" id="btn-dashboard" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
-        <button onclick="switchTab('history')"   id="btn-history"   role="tab" aria-controls="history"   aria-selected="false">Trends</button>
-        <button onclick="switchTab('blocks')"    id="btn-blocks"    role="tab" aria-controls="blocks"    aria-selected="false">Blocks</button>
-        <button onclick="switchTab('memo')"      id="btn-memo"      role="tab" aria-controls="memo"      aria-selected="false">Memo</button>
+        <button data-action="switch-tab" data-tab="guide"     id="btn-guide"     role="tab" aria-controls="guide"     aria-selected="false">Guide</button>
+        <button data-action="switch-tab" data-tab="planning"  id="btn-planning"  role="tab" aria-controls="planning"  aria-selected="false">Planning</button>
+        <button data-action="switch-tab" data-tab="week1"     id="btn-week1"     role="tab" aria-controls="week1"     aria-selected="false">Week 1</button>
+        <button data-action="switch-tab" data-tab="week2"     id="btn-week2"     role="tab" aria-controls="week2"     aria-selected="false">Week 2</button>
+        <button data-action="switch-tab" data-tab="emp-view"  id="btn-emp-view"  role="tab" aria-controls="emp-view"  aria-selected="false">Employee View</button>
+        <button data-action="switch-tab" data-tab="sup-view"  id="btn-sup-view"  role="tab" aria-controls="sup-view"  aria-selected="false">Management View</button>
+        <button data-action="switch-tab" data-tab="dashboard" id="btn-dashboard" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
+        <button data-action="switch-tab" data-tab="history"   id="btn-history"   role="tab" aria-controls="history"   aria-selected="false">Trends</button>
+        <button data-action="switch-tab" data-tab="blocks"    id="btn-blocks"    role="tab" aria-controls="blocks"    aria-selected="false">Blocks</button>
+        <button data-action="switch-tab" data-tab="memo"      id="btn-memo"      role="tab" aria-controls="memo"      aria-selected="false">Memo</button>
     </div>
     <div class="global-controls">
-        <select id="pay-period-selector" onchange="updatePayPeriod()" aria-label="Select Pay Period"></select>
+        <select id="pay-period-selector" data-action="update-pay-period" aria-label="Select Pay Period"></select>
         <span id="save-status" class="save-status" role="status" aria-live="polite" aria-atomic="true"></span>
         <!-- Ambient confidence signal, not an urgent announcement -- deliberately
              no aria-live, matching setSaveStatus()'s own reasoning for guarding
@@ -394,11 +396,11 @@
     </div>
 </nav>
 <div class="export-toolbar no-print">
-    <input type="file" id="import-file" style="display:none" onchange="importData(event)" accept=".json">
-    <button onclick="document.getElementById('import-file').click()">Restore Backup</button>
-    <button class="btn-primary" onclick="exportData()">Download Backup</button>
-    <button class="btn-primary" onclick="exportCSV()">Export CSV</button>
-    <button class="btn-primary" onclick="triggerPrint()">Print Memo</button>
+    <input type="file" id="import-file" style="display:none" data-action="import-data" accept=".json">
+    <button data-action="open-import">Restore Backup</button>
+    <button class="btn-primary" data-action="export-data">Download Backup</button>
+    <button class="btn-primary" data-action="export-csv">Export CSV</button>
+    <button class="btn-primary" data-action="print-memo">Print Memo</button>
 </div>
 
 <div class="bottom-banner no-print" id="unsaved-banner" role="status" aria-live="polite" aria-atomic="true">
@@ -1340,7 +1342,18 @@
         // listener re-shows it) and immediately on any failed save. Dismissing only
         // uncovers the content the fixed bar was sitting on top of.
         else if(action==='dismiss-banner'){ document.getElementById(EL.BANNER).style.display='none'; }
+        // Static nav/toolbar buttons moved off inline onclick= for CSP compliance
+        // (script-src is hash-pinned to this file's own inline <script> blocks --
+        // inline event-handler attributes are not covered by a script hash and are
+        // blocked outright). Delegation here mirrors the dynamic-row pattern above.
+        else if(action==='switch-tab'){ switchTab(btn.dataset.tab); }
+        else if(action==='open-import'){ document.getElementById('import-file').click(); }
+        else if(action==='export-data'){ exportData(); }
+        else if(action==='export-csv'){ exportCSV(); }
+        else if(action==='print-memo'){ triggerPrint(); }
     });
+    document.getElementById('pay-period-selector').addEventListener('change', updatePayPeriod);
+    document.getElementById('import-file').addEventListener('change', importData);
     document.addEventListener('change',e=>{
         const cb=e.target.closest('input[data-action="no-activity"]');
         if(!cb) return;
