@@ -1,16 +1,5 @@
 # Superseded file versions — never delete, never publish
 __old/
 
-# Test tooling
-node_modules/
-test-results/
-playwright-report/
-
-# OS / editor junk
-.DS_Store
-Thumbs.db
-desktop.ini
-*.swp
-
 # Local scratch/log output
 *.log
