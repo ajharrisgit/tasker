@@ -8,7 +8,7 @@
     <meta name="publisher" content="AJSU | FUTURE STRATEGY">
     <meta name="application-name" content="AJSU-Tasker">
     <meta name="description" content="Bi-weekly work log and Tasker Memo tool by AJSU | FUTURE STRATEGY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-moPVd00UYot22Y4Qn6VkMqTbUMIHtYe14/u3C1Fi978=' 'sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=' 'sha256-mmiQqJ9My9eRVmp+WCBSav2muM/L5c8BjwU8geUIH5k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-moPVd00UYot22Y4Qn6VkMqTbUMIHtYe14/u3C1Fi978=' 'sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=' 'sha256-IlkaL3HI3xSE0YX9Sze3UDknSOSxeZ74EPzUKMQ2Gro='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
     <meta name="referrer" content="no-referrer">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%230052CC%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2243%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2230%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAT%3C/text%3E%3C/svg%3E">
     <!-- Chart.js and its datalabels plugin are INLINED here, not loaded from a CDN.
@@ -436,8 +436,8 @@
             <li><strong>Status Options:</strong> Complete, Delegated, Follow-up, In-Progress, On Hold, Pending, Re-assigned. Only On Hold, Follow-up, Delegated, and Re-assigned appear in the Management View.</li>
             <li><strong>Employee View Tab:</strong> Shows your completion rate, where your time went by category, priority load, and worksite breakdown for the current period.</li>
             <li><strong>Management View Tab:</strong> Shows items requiring supervisor attention, high-priority completions, and a full status count for the period.</li>
-            <li><strong>Dashboard Tab:</strong> Visual charts for the current period — status breakdown, category mix, and worksite distribution. Charts only appear after activity is logged.</li>
-            <li><strong>Trends Tab:</strong> Cross-period charts showing patterns across pay periods — not linear progress, but how your work mix, completion rate, and attention items shift over time. Switch pay periods to build history. Requires at least two periods of data.</li>
+            <li><strong>Dashboard Tab:</strong> Visual charts for the current period. These cover status breakdown, category mix, and worksite distribution. Charts appear after you log activity.</li>
+            <li><strong>Trends Tab:</strong> Charts that compare your pay periods. They show how your work mix, completion rate, and attention items shift over time. They do not show linear progress. Switch pay periods to build history. Two periods of data are required.</li>
             <li><strong>Printing:</strong> Click the Print Memo button in the menu bar to print the Tasker Memo. For PDF output, select Save as PDF as the destination, uncheck Headers and Footers, check Print Backgrounds, then click Print.</li>
         </ul>
         <p><strong>System Requirements & Limitations</strong></p>
@@ -445,10 +445,10 @@
             <li><strong>Single User Only:</strong> This application is personalized and saves to this specific computer and browser. Do not share your browser profile or log file with other users.</li>
             <li><strong>Do Not Clear Browser History:</strong> Clearing your browser history, cookies, or cache permanently deletes your saved records. Click Download Backup in the menu bar to save a backup. Print any tracker information before clearing your browser to prevent data loss.</li>
             <li><strong>The Tasker Log Carries Over Between Sessions:</strong> As long as you do not clear your browser history, your work restores automatically the next time you open this file.</li>
-            <li><strong>The Backup File is Your Permanent Record:</strong> The red banner at the bottom appears when your work has not yet been exported to a backup file. Your entries are still saved automatically to this browser as you type — the banner is a reminder to also download a portable file copy, since clearing browser data would otherwise erase them permanently. Click Download Backup to save that copy, or dismiss the banner with the &times; button if it covers content you need to read — it will reappear on your next change.</li>
+            <li><strong>The Backup File is Your Permanent Record:</strong> The red banner at the bottom appears when your work has not yet been exported to a backup file. Your entries are still saved automatically to this browser as you type. The banner is a reminder to also download a portable file copy. Clearing browser data would erase your entries permanently. Click Download Backup to save that copy. If the banner covers content you need to read, dismiss it with the &times; button. It reappears on your next change.</li>
             <li><strong>The Saved indicator confirms your work is stored.</strong> The menu bar shows <em>Saved</em> with a timestamp each time your entries are written to this browser, updating as you type. If it turns red and reads <em>NOT SAVED</em>, download a backup immediately and do not close the tab until you have.</li>
             <li><strong>Backup files carry forward all saved data.</strong> Data in a backup file is permanent. To fix an incorrect task, restore the backup, correct the task directly in the app, then download a new backup to replace the old one.</li>
-            <li><strong>Use Chrome or Edge for this file.</strong> Chrome and Edge reliably keep your saved data when you open this file directly. Firefox does not guarantee that data opened from a local file this way will still be there the next time you open it — this is a limitation of how Firefox handles locally-opened files, not something this app controls. Printing and file import also require Chrome or Edge; these features do not work inside preview panels or embedded viewers either.</li>
+            <li><strong>Use Chrome or Edge for this file.</strong> Chrome and Edge reliably keep your saved data when you open this file directly. Firefox does not guarantee that your data will still be there the next time you open the file. This is a limitation of how Firefox handles locally-opened files. It is not something this app controls. Printing and file import also require Chrome or Edge. These features do not work inside preview panels or embedded viewers.</li>
         </ul>
 
     </div>
@@ -481,7 +481,7 @@
         </div>
         <div class="planning-section" style="grid-column:span 2;">
             <label for="plan-sup-notes">Feedback</label>
-            <p class="field-hint">Supervisor notes and feedback. Syncs live to the Tasker Memo — what you type here appears in Supervisor Notes.</p>
+            <p class="field-hint">Supervisor notes and feedback. Syncs live to the Tasker Memo. What you type here appears in Supervisor Notes.</p>
             <textarea class="line-list" id="plan-sup-notes" name="plan-sup-notes" placeholder="Example: Follow up on any outstanding invoices by the end of the month."></textarea>
         </div>
     </div>
@@ -1644,7 +1644,7 @@
             if(banner){
                 banner.style.display='block';
                 banner.classList.add('banner-error');
-                if(bannerText) bannerText.textContent='SAVING FAILED — this browser rejected the write, so your recent typing is NOT stored. Click "Download Backup" now and do not close this tab.';
+                if(bannerText) bannerText.textContent='SAVING FAILED. This browser rejected the write. Your recent typing is NOT stored. Click "Download Backup" now and do not close this tab.';
             }
             console.warn('localStorage write failed:',e);
             setSaveStatus(false);
@@ -1978,8 +1978,8 @@
         // Week 1: Mon (+1) to Fri (+5); Week 2: Mon (+8) to Fri (+12) from Sunday period start
         function _d(base,n){let r=new Date(base);r.setDate(r.getDate()+n);return fmtDate(r.toISOString().split('T')[0]);}
         let _b=new Date(p.start+'T12:00:00');
-        let w1Range=`${_d(_b,1)} — ${_d(_b,5)}`;
-        let w2Range=`${_d(_b,8)} — ${_d(_b,12)}`;
+        let w1Range=`${_d(_b,1)} to ${_d(_b,5)}`;
+        let w2Range=`${_d(_b,8)} to ${_d(_b,12)}`;
         function buildRows(rows){
             return rows.map(r=>{
                 // escMultiline, not a bare &lt;/&gt; swap: it also escapes '&'
@@ -2004,7 +2004,7 @@
             `<table class="print-table memo-activity-table">`+
             `<colgroup><col style="width:16%"><col style="width:38%"><col style="width:12%"><col style="width:34%"></colgroup>`+
             `<thead>`+
-            `<tr class="memo-week-header"><td colspan="4">${label} — ${range}</td></tr>`+
+            `<tr class="memo-week-header"><td colspan="4">${label}: ${range}</td></tr>`+
             `<tr class="memo-col-header"><th>Date</th><th>Activity</th><th>Status</th><th>Notes</th></tr>`+
             `</thead><tbody>${buildRows(rows)}</tbody></table>`;
         let html='';
@@ -2428,7 +2428,7 @@
         saveState();
         // Confirm download — browser gives no native feedback
         let taskCount=Object.keys(state.tasks).length;
-        console.info(`Backup downloaded: ${a.download} — ${taskCount} tasks, Period ${state.periodId}`);
+        console.info(`Backup downloaded: ${a.download}, ${taskCount} tasks, Period ${state.periodId}`);
     }
 
     // Quote/escape one CSV cell: wrap in quotes and double any embedded quote
@@ -2486,7 +2486,7 @@
         document.body.removeChild(a);
         setTimeout(()=>URL.revokeObjectURL(url), 1000);
         const n=rows.length-1;
-        console.info(`CSV exported: ${a.download} — ${n} activit${n===1?'y':'ies'}`);
+        console.info(`CSV exported: ${a.download}, ${n} activit${n===1?'y':'ies'}`);
     }
 
     function importData(e){

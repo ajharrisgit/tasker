@@ -113,8 +113,12 @@
         <li><strong>Management View</strong> - Items requiring your supervisor's attention, high-priority completions, and a full count of every status for the period.</li>
         <li><strong>Dashboard</strong> - Visual charts for the current period's status, category, and worksite distributions.</li>
         <li><strong>Trends</strong> - Cross-period charts that build automatically as you work through the year. No action required from you.</li>
+        <li><strong>Blocks</strong> - Every activity you have logged, across every pay period, in one scannable list sorted by date. Use it to confirm at a glance that your work is all still there. It is read-only: edit blocks in Week 1 and Week 2, not here.</li>
         <li><strong>Memo</strong> - The Tasker Memo. Fill in your name, department, and supervisor, then print or save as PDF.</li>
     </ul>
+
+    <p><strong>The Export Toolbar</strong></p>
+    <p>Below the tab bar is a second row holding the backup and export buttons - <strong>Restore Backup</strong>, <strong>Download Backup</strong>, <strong>Export CSV</strong>, and <strong>Print Memo</strong>. These are kept on their own row so they cannot be clicked by accident while you are switching tabs or pay periods.</p>
 
     <p><strong>Status Color Coding</strong></p>
     <p>Status dropdowns change background color to reflect the current value, so you can scan the week at a glance:</p>
@@ -308,7 +312,7 @@
 
     <h3>Activity Tracker</h3>
     <p>The Activity Tracker table lists all activities from Week 1 and Week 2, grouped by week. Each entry shows the date, activity, status, and notes. It populates automatically. You do not need to do anything to fill it in.</p>
-    <p>Worksite and Category are not included in the Activity Tracker. Worksite is a personal metric. Category is an internal classification — the Tasker Memo communicates outcomes to management, not internal labels.</p>
+    <p>Worksite and Category are not included in the Activity Tracker. Worksite is a personal metric. Category is an internal classification. The Tasker Memo communicates outcomes to management, not internal labels.</p>
 
     <h3>Signature Lines</h3>
     <p>The Employee Signature and Supervisor Signature lines appear at the bottom of the memo for manual signing after printing.</p>
@@ -343,7 +347,7 @@
     </ul>
     <div class="note">
         <strong>Printed worklogs identify themselves</strong>
-        When you print Week 1 or Week 2, a header is added at the top of the page showing your name, department, supervisor, and the pay period — even though that header is not visible on screen. It is filled in from the Name, Department, and Supervisor fields on the Memo tab, so fill those in before printing. If they are blank, the printed sheet will say "(name not entered)".
+        When you print Week 1 or Week 2, a header is added at the top of the page showing your name, department, supervisor, and the pay period. That header is not visible on screen. It is filled in from the Name, Department, and Supervisor fields on the Memo tab, so fill those in before printing. If they are blank, the printed sheet will say "(name not entered)".
     </div>
 
     <h3>Print Note for Claude Desktop Users</h3>
@@ -361,14 +365,22 @@
     </div>
 
     <h3>Knowing Your Work Is Saved</h3>
-    <p>A small <strong>Saved</strong> indicator with a timestamp appears in the top navigation bar each time your work is written to the browser. It updates as you type. This confirms your data is stored in this browser — it is not the same as downloading a backup file.</p>
+    <p>A small <strong>Saved</strong> indicator with a timestamp appears in the top navigation bar each time your work is written to the browser. It updates as you type. This confirms your data is stored in this browser. It is not the same as downloading a backup file.</p>
     <p>If saving ever fails, that indicator turns red and reads <strong>NOT SAVED</strong>, and the banner at the bottom of the screen changes to a saving-failure message. If you see that, download a backup immediately and do not close the tab until you have.</p>
+    <p>Next to the Saved time is a running count of everything stored for the year, for example <em>134 activities &middot; 18 days</em>. It covers the whole year, not just the pay period on screen, so the number should only ever grow as you work. It updates at natural stopping points - when you finish a block, switch tabs, or change pay period - rather than on every keystroke. If that count ever drops unexpectedly, restore your most recent backup before entering anything further.</p>
 
     <h3>Downloading a Backup</h3>
-    <p>A red banner appears at the bottom of the screen when you have changes that have not been saved to a file. Click Download Backup to save a JSON file to your computer. You can dismiss the banner with the <strong>&times;</strong> button at its right edge if it covers content you need to read — it is only a reminder, and it will reappear the next time you make a change.</p>
-    <p>Backup files are named automatically by period number:</p>
-    <p><em>AJSU-Tasker_PayPeriod16_Backup.json</em></p>
-    <p>Keep backups organized in a folder by year. Trends history is captured automatically each time you switch pay periods, not on backup download.</p>
+    <p>A red banner appears at the bottom of the screen when you have changes that have not been saved to a file. Click Download Backup in the export toolbar to save a JSON file to your computer. You can dismiss the banner with the <strong>&times;</strong> button at its right edge if it covers content you need to read. It is only a reminder. It reappears the next time you make a change.</p>
+    <p>Backup files are named automatically by year and the date and time you saved them:</p>
+    <p><em>AJSU-Tasker_2026_Backup_2026-09-02_1430.json</em></p>
+    <p>The file name carries the year rather than a period number because <strong>a backup always contains your whole year</strong>, every pay period, not only the one on screen when you clicked. Keep backups in a folder by year; the timestamp makes the newest one obvious at a glance. Trends history is captured automatically each time you switch pay periods, not on backup download.</p>
+
+    <h3>Exporting a CSV</h3>
+    <p>Click <strong>Export CSV</strong> in the export toolbar to download a spreadsheet of every activity you have logged, one row per activity, across all pay periods. It opens directly in Excel.</p>
+    <div class="note">
+        <strong>A CSV is a report, not a backup</strong>
+        The CSV is for reading, sorting, and sharing your activity outside the application. It <strong>cannot be restored</strong> back into the Tasker. Only the JSON backup file can be restored, so keep downloading those as well.
+    </div>
 
     <h3>Restoring a Backup</h3>
     <ol class="steps">
