@@ -8,7 +8,7 @@
     <meta name="publisher" content="AJSU | FUTURE STRATEGY">
     <meta name="application-name" content="AJSU-Tasker">
     <meta name="description" content="Bi-weekly work log and Tasker Memo tool by AJSU | FUTURE STRATEGY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-moPVd00UYot22Y4Qn6VkMqTbUMIHtYe14/u3C1Fi978=' 'sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=' 'sha256-IlkaL3HI3xSE0YX9Sze3UDknSOSxeZ74EPzUKMQ2Gro='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-moPVd00UYot22Y4Qn6VkMqTbUMIHtYe14/u3C1Fi978=' 'sha256-IMCPPZxtLvdt9tam8RJ8ABMzn+Mq3SQiInbDmMYwjDg=' 'sha256-hmqreb9qfsyjE/7wwezY1SaxaWUD98f2YJzuzRk3xLQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
     <meta name="referrer" content="no-referrer">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%230052CC%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2243%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2230%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%20text-anchor%3D%22middle%22%3EAT%3C/text%3E%3C/svg%3E">
     <!-- Chart.js and its datalabels plugin are INLINED here, not loaded from a CDN.
@@ -1399,7 +1399,7 @@
         // Category is the FIRST column and Activity the second, so choosing a
         // Category/Status/Priority before typing the activity is the normal
         // left-to-right entry order. Record that the user touched this select NOW
-        // \u-- the ROW_DEFAULTS reset below must not later stomp a deliberate choice
+        // — the ROW_DEFAULTS reset below must not later stomp a deliberate choice
         // just because activity happened to be typed second. selectedIndex is not
         // a usable proxy for "untouched": 'Leave/PTO' IS the first category option.
         if(t.tagName==='SELECT') t.dataset.touched='1';
@@ -1529,7 +1529,15 @@
         // switch. Save under the pre-switch pid, THEN adopt the selector's value.
         savePlanningForPeriod(state.periodId);
         state.periodId=parseInt(document.getElementById(EL.PERIOD_SEL).value);
-        ['memo-name','memo-dept','memo-sup','memo-prepared-on','memo-dates-print'].forEach(id=>{
+        // memo-prepared-on is deliberately NOT saved. It is the date the memo was
+        // prepared, so it must default to today every time the app loads. It used to
+        // persist like the other header fields, which froze whatever was typed once
+        // and then printed that same stale date onto every later period's memo --
+        // a Pay Period 18 memo covering Aug 16-29 went out stamped "August 4, 2026",
+        // above a signature line. Leaving it out of state is the whole fix: the
+        // field stays editable for a deliberate override before printing, but the
+        // override lasts for the session instead of forever.
+        ['memo-name','memo-dept','memo-sup','memo-dates-print'].forEach(id=>{
             let el=document.getElementById(id); if(el) state[id]=el.innerHTML;
         });
         // Update visible rows in-place; preserve tasks from other periods
@@ -1538,7 +1546,7 @@
             if(row.closest('.day-no-activity')) return; // no-activity day — skip
             let act=fieldText(row.querySelector('[data-field="activity"]'));
             let notesTxt=fieldText(row.querySelector('[data-field="notes"]'));
-            // A row is empty \u-- and therefore deletable \u-- only when BOTH the activity
+            // A row is empty — and therefore deletable — only when BOTH the activity
             // and the notes are blank. Keying deletion on activity alone silently
             // discarded a row the user had typed notes into. Notes-only rows persist
             // and render, but stay excluded from every metric and from the memo
@@ -1802,9 +1810,10 @@
         ['memo-name','memo-dept','memo-sup','memo-dates-print'].forEach(id=>{
             let el=document.getElementById(id); if(el && state[id] !== undefined && state[id] !== null) el.innerHTML=state[id];
         });
+        // Always today. See the note in extractState() on why this is not restored
+        // from state: a persisted value silently outlives the memo it was typed for.
         let dp=document.getElementById('memo-prepared-on');
-        dp.innerHTML=state['memo-prepared-on']||
-            new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        dp.textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
         loadPlanningForPeriod(pid);
         generateDays();
         let d=aggregateBlocks();
@@ -1924,7 +1933,7 @@
         document.querySelectorAll('.task-row[id]').forEach(row=>{
             if(row.id.startsWith('blank_')) return; // blank row — never count in metrics
             if(row.closest('.day-no-activity')) return; // no-activity day — skip
-            // Activity text is still required to COUNT \u-- notes-only rows persist but
+            // Activity text is still required to COUNT — notes-only rows persist but
             // are never a tracked activity, or they would distort completion rates.
             let act=fieldText(row.querySelector('[data-field="activity"]'));
             if(!act.length) return;
@@ -2603,7 +2612,7 @@
                     t.activity=strip(t.activity).replace(/\u00a0/g,' ').trim();
                     t.notes=strip(t.notes).replace(/\u00a0/g,' ').trim();
                     // worksite is only ever rendered as a <select> value, never innerHTML'd,
-                    // so it doesn't need strip()'s HTML sanitization \u-- just normalize whitespace
+                    // so it doesn't need strip()'s HTML sanitization — just normalize whitespace
                     // like every other text field for consistency.
                     t.worksite=t.worksite.replace(/\u00a0/g,' ').trim();
                 });
@@ -2645,6 +2654,33 @@
                     let act=(imp.tasks[k].activity||'')
                         .replace(/&nbsp;/g,' ').replace(/ /g,' ').trim();
                     if(act) imp.tasks[k].activity=act;
+                });
+                // Drop history entries for periods that have no surviving tasks.
+                // A history entry is normally never zeroed or removed --
+                // capturePeriodSummary() returns early on a zero total so a
+                // transient mid-switch zero cannot wipe a real summary -- so a
+                // period whose rows are gone keeps its old totals forever, and
+                // getHistoryData() (totalBlocks>0) charts it regardless. That is how
+                // history["15"] came to claim 26 blocks at 65% with nothing behind
+                // it: a fossil of a data-loss incident that outlived the data by a
+                // month, plotted on the Trends tab as though it were real. Import is
+                // the one safe place to reconcile, because history is recomputed
+                // below anyway and the transient-zero case the guard exists for
+                // cannot occur on a detached object. Only entries CLAIMING blocks
+                // are dropped; a zero-block entry is left alone, and a period with
+                // even one surviving row is never touched.
+                const dateIdx=buildDateIndex();
+                const pidsWithTasks=new Set();
+                Object.keys(imp.tasks).forEach(k=>{
+                    if(k.endsWith('_no_activity')) return;
+                    const parsed=parseRowId(k);
+                    if(!parsed) return;
+                    const hit=dateIdx[parsed.julian+'y'+parsed.year];
+                    if(hit) pidsWithTasks.add(String(hit.periodId));
+                });
+                Object.keys(imp.history).forEach(pid=>{
+                    const h=imp.history[pid];
+                    if(h&&h.totalBlocks>0&&!pidsWithTasks.has(String(pid))) delete imp.history[pid];
                 });
                 // Restore to whichever tab the user was actually viewing when they
                 // clicked Restore, not whatever tab happened to be saved inside the
